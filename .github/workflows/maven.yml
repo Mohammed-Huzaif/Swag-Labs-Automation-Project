@@ -20,9 +20,11 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
+        cache: maven
+
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1
-      cache: maven
+
     - name: Running Automation Test Framework with Maven
       run: mvn test -Dbrowser=chrome -DisHeadless=false
       
@@ -41,7 +43,7 @@ jobs:
        path: report.html  
 
     - name: Test Execution Status
-      run: echo "Test Excecution Completed"
+      run: echo "Test Execution Completed"
     
     
       
