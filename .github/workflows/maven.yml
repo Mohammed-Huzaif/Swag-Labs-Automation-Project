@@ -56,10 +56,11 @@ jobs:
       if: always()
       
       run: |
-          mkdir -p public/extent-reports/
-          cp report.html public/extent-reports/
-          cp -R screenshots/ public/extent-reports/screenshots/
-          ls -l public/extent-reports/
+         mkdir -p public/extent-reports/
+         mkdir -p public/extent-reports/screenshots/
+         cp report.html public/extent-reports/
+         if [ -d screenshots ]; then cp -R screenshots/* public/extent-reports/screenshots/; fi
+         ls -l public/extent-reports/
 
     - name: Deploy
       if: always()
