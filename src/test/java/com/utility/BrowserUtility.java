@@ -62,6 +62,8 @@ public abstract class BrowserUtility {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless=new");
                 options.addArguments("--window-size=1920,1080");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 driver.set(new ChromeDriver(options));
             } else {
                 driver.set(new ChromeDriver());
@@ -69,6 +71,8 @@ public abstract class BrowserUtility {
         } else if (browserName == Browser.EDGE) {
             if (isHeadless == true) {
                 EdgeOptions options = new EdgeOptions();
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
                 driver.set(new EdgeDriver(options));
@@ -80,6 +84,8 @@ public abstract class BrowserUtility {
             if (isHeadless == true) {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 driver.set(new FirefoxDriver(options));
             } else {
                 driver.set(new FirefoxDriver());
