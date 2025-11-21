@@ -119,6 +119,12 @@ public abstract class BrowserUtility {
     }
 
     public String takeScreenshot(String name) {
+
+        File folder = new File("./screenshots");
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
         TakesScreenshot screenshot = (TakesScreenshot) driver.get();
         Date date = new Date();
         File screenshotData = screenshot.getScreenshotAs(OutputType.FILE);
