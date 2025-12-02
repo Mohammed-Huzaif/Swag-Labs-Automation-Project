@@ -11,23 +11,20 @@ import java.util.Properties;
 
 public class PropertiesUtility {
 
-    //read property file
+    public static String readProperty(Env env, String propertyName) {
+        File propFile = new File(System.getProperty("user.dir") + "//config//" + env + ".properties");
+        FileReader fileReader;
+        Properties properties = new Properties();
+        try {
+            fileReader = new FileReader(propFile);
+            properties.load(fileReader);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-   public static String readProperty(Env env, String propertyName){
-       File propFile = new File(System.getProperty("user.dir") + "//config//" + env + ".properties" );
-       FileReader fileReader;
-       Properties properties = new Properties();
-       try {
-           fileReader = new FileReader(propFile);
-           properties.load(fileReader);
-       } catch (FileNotFoundException e) {
-           throw new RuntimeException(e);
-       }
-       catch (IOException e) {
-           throw new RuntimeException(e);
-       }
+        return properties.getProperty(propertyName.toUpperCase());
 
-       return properties.getProperty(propertyName.toUpperCase());
-
-   }
+    }
 }

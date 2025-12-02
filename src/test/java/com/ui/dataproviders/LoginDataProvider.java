@@ -17,8 +17,8 @@ public class LoginDataProvider {
 
 
     @DataProvider(name = "LoginTestDataProviderJson")
-    public Iterator<Object[]> loginDataProvider(){
-        Gson gson   = new Gson();
+    public Iterator<Object[]> loginDataProvider() {
+        Gson gson = new Gson();
         File jsonFile = new File(System.getProperty("user.dir") + "//testData//loginData.json");
         FileReader fileReader;
         try {
@@ -31,8 +31,8 @@ public class LoginDataProvider {
         TestData data = gson.fromJson(fileReader, TestData.class);
         List<Object[]> dataToReturn = new ArrayList<>();
 
-        for (User user: data.getData()){
-             dataToReturn.add(new Object[]{user});
+        for (User user : data.getData()) {
+            dataToReturn.add(new Object[]{user});
         }
 
         return dataToReturn.iterator();

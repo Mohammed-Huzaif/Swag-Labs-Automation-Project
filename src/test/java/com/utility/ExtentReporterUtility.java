@@ -7,24 +7,24 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentReporterUtility {
 
     private static ExtentReports extentReports;
-    private static  ThreadLocal<ExtentTest>  extentTest= new ThreadLocal <ExtentTest>();
+    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
-    public static void setUpSparkReporter(String reportName){
-        ExtentSparkReporter  extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "//"  + reportName);
+    public static void setUpSparkReporter(String reportName) {
+        ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "//" + reportName);
         extentReports = new ExtentReports();
         extentReports.attachReporter(extentSparkReporter);
     }
 
-    public static void createExtentTest(String testName){
+    public static void createExtentTest(String testName) {
         ExtentTest test = extentReports.createTest(testName);
         extentTest.set(test);
     }
 
-    public static ExtentTest getExtentTest(){
+    public static ExtentTest getExtentTest() {
         return extentTest.get();
     }
 
-    public static void flushReport(){
+    public static void flushReport() {
         extentReports.flush(); ////this method dumps all the data
     }
 }

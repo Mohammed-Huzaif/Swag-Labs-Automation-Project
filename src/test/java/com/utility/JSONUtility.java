@@ -11,9 +11,9 @@ import java.io.FileReader;
 
 public class JSONUtility {
 
-    public static Environment readJSON(Env env){
+    public static Environment readJSON(Env env) {
         Gson gson = new Gson();
-        File jsonFile = new File(System.getProperty("user.dir") + "//config//config.json" );
+        File jsonFile = new File(System.getProperty("user.dir") + "//config//config.json");
         FileReader fileReader;
 
         try {
@@ -22,8 +22,8 @@ public class JSONUtility {
             throw new RuntimeException(e);
         }
 
-        Config config =  gson.fromJson(fileReader, Config.class);
-        Environment environment = config.getEnvironments().get("QA");
-        return  environment;
+        Config config = gson.fromJson(fileReader, Config.class);
+        Environment environment = config.getEnvironments().get(env.name());
+        return environment;
     }
 }

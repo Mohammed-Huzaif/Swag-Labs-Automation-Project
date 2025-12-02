@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class BrowserUtility {
 
@@ -38,7 +40,7 @@ public abstract class BrowserUtility {
         } else if (browserName.equalsIgnoreCase("firefox")) {
             driver.set(new FirefoxDriver());
         } else {
-            System.err.println("Invalid Browser Name.. Please select Chrome or Edge");
+            System.err.println("Invalid Browser Name.. Please select Chrome,Edge or Firefox");
         }
     }
 
@@ -51,7 +53,7 @@ public abstract class BrowserUtility {
         } else if (browserName == Browser.FIREFOX) {
             driver.set(new FirefoxDriver());
         } else {
-            System.err.println("Invalid Browser Name.. Please select Chrome or Edge");
+            System.err.println("Invalid Browser Name.. Please select Chrome, Edge or Firefox");
         }
     }
 
@@ -66,15 +68,15 @@ public abstract class BrowserUtility {
                 options.addArguments("--disable-dev-shm-usage");
                 driver.set(new ChromeDriver(options));
             } else {
-                driver.set(new ChromeDriver());
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--incognito");
+                driver.set(new ChromeDriver(options));
             }
         } else if (browserName == Browser.EDGE) {
             if (isHeadless == true) {
                 EdgeOptions options = new EdgeOptions();
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-dev-shm-usage");
-                options.addArguments("--headless=new");
-                options.addArguments("--disable-gpu");
+                options.addArguments("--headless");
+                options.addArguments("--window-size=1920,1080");
                 driver.set(new EdgeDriver(options));
             } else {
                 driver.set(new EdgeDriver());
@@ -83,15 +85,14 @@ public abstract class BrowserUtility {
         } else if (browserName == Browser.FIREFOX) {
             if (isHeadless == true) {
                 FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--headless=new");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--headless");
+                options.addArguments("--window-size=1920,1080");
                 driver.set(new FirefoxDriver(options));
             } else {
                 driver.set(new FirefoxDriver());
             }
         } else {
-            System.err.println("Invalid Browser Name.. Please select Chrome or Edge");
+            System.err.println("Invalid Browser Name.. Please select Chrome, Edge or Firefox");
         }
     }
 

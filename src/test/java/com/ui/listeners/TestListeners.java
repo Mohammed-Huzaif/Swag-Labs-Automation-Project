@@ -22,10 +22,6 @@ public class TestListeners implements ITestListener {
 
     Logger logger = LoggerUtility.getLogger(this.getClass());
 
-//    ExtentSparkReporter extentSparkReporter; //Creates a html file,look and style
-//    ExtentReports extentReports; //heavylifting, dumps data into a file and create a report into a file
-//    ExtentTest extentTest; //it stores info of the tests
-
     public void onTestStart(ITestResult result) {
         logger.info(result.getMethod().getMethodName());
         logger.info(result.getMethod().getDescription());

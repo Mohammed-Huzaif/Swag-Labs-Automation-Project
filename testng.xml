@@ -4,7 +4,9 @@
         <parameter name="browser" value="${browser}"></parameter>
         <parameter name="isHeadless" value="${isHeadless}"></parameter>
         <classes>
-            <class name="com.ui.tests.LoginTest"/>
+            <class name="com.ui.tests.LoginTest"></class>
+            <class name="com.ui.tests.InvalidLoginTest"></class>
+            <class name="com.ui.tests.ProductCheckoutTest"></class>
         </classes>
     </test>
 </suite>

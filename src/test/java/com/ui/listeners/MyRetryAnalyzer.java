@@ -13,17 +13,15 @@ public class MyRetryAnalyzer implements IRetryAnalyzer {
 
     //reading from json file
     private static final int MAX_ATTEMPTS = JSONUtility.readJSON(Env.QA).getMAX_NUMBER_OF_ATTEMPTS();
-
-    private  static int currentAttempt =1;
+    private static int currentAttempt = 1;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
 
-        if(currentAttempt <= MAX_ATTEMPTS){
+        if (currentAttempt <= MAX_ATTEMPTS) {
             currentAttempt++;
             return true;
         }
-
 
 
         return false;
