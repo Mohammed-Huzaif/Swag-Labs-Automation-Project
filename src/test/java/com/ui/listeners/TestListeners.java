@@ -41,10 +41,12 @@ public class TestListeners implements ITestListener {
         ExtentReporterUtility.getExtentTest().log(Status.FAIL, result.getMethod().getMethodName() + " " + "FAILED");
         ExtentReporterUtility.getExtentTest().log(Status.FAIL, result.getThrowable().getMessage());
 
+        logger.info("Attaching Screenshot");
         Object testClass = result.getInstance();
         BrowserUtility browserUtility = ((TestBase) testClass).getInstance();
         String path = browserUtility.takeScreenshot(result.getMethod().getMethodName());
         ExtentReporterUtility.getExtentTest().addScreenCaptureFromPath(path);
+        logger.info("Screenshot Attached");
     }
 
     public void onTestSkipped(ITestResult result) {
